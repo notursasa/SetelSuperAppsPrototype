@@ -1,0 +1,204 @@
+.map-simulation-container {
+  flex: 1;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  background-color: #FFFFFF;
+}
+
+.map-overlay {
+  width: 100%;
+  max-width: 800px;
+  height: 100%;
+  max-height: 850px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.map-title {
+  text-align: center;
+}
+
+.map-title h2 {
+  font-size: 2rem;
+  color: var(--color-text-main);
+  margin-bottom: 8px;
+}
+
+.map-title p {
+  color: var(--color-text-muted);
+}
+
+.interactive-map {
+  flex: 1;
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+  border: 1px solid var(--color-border);
+}
+
+.map-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+/* Destination Office Marker */
+.location-marker {
+  position: absolute;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.location-marker.office {
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.marker-pin {
+  font-size: 2.5rem;
+  background: white;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  margin-bottom: 8px;
+  position: relative;
+}
+
+/* Add a radar ping to the office */
+.pulse-ring::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 161, 241, 0.4);
+  border-radius: 50%;
+  z-index: -1;
+  animation: radarPulse 2s infinite;
+}
+
+@keyframes radarPulse {
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(2.5); opacity: 0; }
+}
+
+.marker-label {
+  background: rgba(255,255,255,0.95);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  backdrop-filter: blur(4px);
+}
+
+/* Moving Vehicle */
+.moving-vehicle {
+  position: absolute;
+  z-index: 10;
+  /* Start position: bottom right */
+  top: 80%;
+  left: 80%;
+  transform: translate(-50%, -50%);
+  opacity: 0; 
+  transition: opacity 0.3s;
+}
+
+.moving-vehicle.driving {
+  opacity: 1;
+  animation: driveToOffice 4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.moving-vehicle.arrived {
+  opacity: 1;
+  /* End position matching office */
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1.2);
+}
+
+.vehicle-icon {
+  font-size: 2.5rem;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+}
+
+@keyframes driveToOffice {
+  0% {
+    top: 80%;
+    left: 80%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+  50% {
+    top: 55%;
+    left: 65%;
+    transform: translate(-50%, -50%) rotate(-30deg);
+  }
+  100% {
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+}
+
+/* Controls */
+.simulate-car-btn {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+  background: var(--color-primary);
+  border: none;
+  border-radius: 40px;
+  padding: 14px 28px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  box-shadow: 0 8px 32px rgba(0, 161, 241, 0.4);
+  transition: all 0.2s ease;
+}
+
+.simulate-car-btn:hover {
+  transform: translateX(-50%) scale(1.05);
+}
+
+.simulate-car-btn:active {
+  transform: translateX(-50%) scale(0.95);
+}
+
+.simulate-car-btn.arrived-state {
+  background: white;
+  border: 2px solid var(--color-border);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.simulate-car-btn.arrived-state .car-label {
+  color: var(--color-text-main);
+}
+
+.car-icon {
+  font-size: 1.5rem;
+}
+
+.car-label {
+  color: white;
+  font-weight: 700;
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+}

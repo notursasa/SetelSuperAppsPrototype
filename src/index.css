@@ -1,0 +1,249 @@
+:root {
+  /* Setel Authentic Palette */
+  --color-primary: #00A1F1; /* Authentic Setel Blue */
+  --color-primary-dark: #0081C4;
+  --color-primary-light: #E6F6FE;
+  --color-accent: #FFC000;
+  
+  --color-bg-main: #F4F6F8;
+  --color-bg-card: #FFFFFF;
+  --color-text-main: #111827;
+  --color-text-muted: #6B7280;
+  --color-text-light: #9CA3AF;
+  
+  --color-border: #E5E7EB;
+  --color-success: #10B981;
+  --color-warning: #F59E0B;
+  --color-danger: #EF4444;
+
+  /* Glassmorphism & Shadows */
+  --glass-bg: rgba(255, 255, 255, 0.95);
+  --glass-border: rgba(255, 255, 255, 0.4);
+  --card-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+  --card-shadow-hover: 0 4px 20px rgba(0, 0, 0, 0.08);
+
+  /* Typography */
+  --font-heading: 'Inter', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+
+  /* Radii */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-pill: 999px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: #F8FAFC; /* Clean presentation background */
+  color: var(--color-text-main);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+}
+
+/* The Presentation Root */
+.presentation-layout {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Phone Container Wrapper */
+.phone-mockup-wrapper {
+  flex: 0 0 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #E2E8F0;
+  border-left: 1px solid var(--color-border);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.presentation-layout.map-hidden {
+  justify-content: center;
+  background-color: #E2E8F0;
+}
+
+.phone-mockup-wrapper.centered-phone {
+  flex: 0 0 auto;
+  border-left: none;
+  background-color: transparent;
+  transform: scale(1.05); /* slightly enlarge when standalone */
+}
+
+/* Mobile Wrapper Container - Mocking an iPhone frame */
+.app-container {
+  width: 100%;
+  max-width: 400px;
+  height: 100vh;
+  max-height: 850px;
+  background-color: var(--color-bg-main);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+  background-image: none; 
+}
+
+@media (min-width: 450px) {
+  .app-container {
+    height: 90vh;
+    border-radius: 48px;
+    /* Outer silver frame + inner black bezel */
+    box-shadow: 0 0 0 2px #d1d5db, 0 0 0 14px #1A1A1A, 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+    margin: 14px; /* Space for the box shadow fake border */
+    /* Add a subtle inner shadow to mimic depth */
+    border: 1px solid #333;
+  }
+  
+  /* Mock Dynamic Island / Notch */
+  .app-container::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 30px;
+    background-color: #1A1A1A;
+    border-radius: 20px;
+    z-index: 1000;
+  }
+
+  /* Hardware button mockups (Power button on right, Volume on left) */
+  .phone-mockup-wrapper {
+    position: relative;
+  }
+
+  /* We will use pseudo-elements on the wrapper for hardware buttons */
+  .phone-mockup-wrapper::before {
+    content: '';
+    position: absolute;
+    left: calc(50% - 212px); /* adjust based on phone width */
+    top: 25%;
+    width: 4px;
+    height: 50px;
+    background: #9ca3af;
+    border-radius: 4px 0 0 4px;
+    box-shadow: 0 70px 0 #9ca3af; /* Second volume button */
+  }
+
+  .phone-mockup-wrapper::after {
+    content: '';
+    position: absolute;
+    right: calc(50% - 212px);
+    top: 30%;
+    width: 4px;
+    height: 70px;
+    background: #9ca3af;
+    border-radius: 0 4px 4px 0;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+}
+
+/* Utility Classes */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--card-shadow);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px var(--spacing-lg);
+  border-radius: var(--radius-md);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  width: 100%;
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: white;
+  box-shadow: 0 4px 14px rgba(0, 161, 241, 0.25);
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+  background-color: var(--color-primary-dark);
+}
+
+.btn-secondary {
+  background-color: white;
+  color: var(--color-primary);
+  border: 1px solid var(--color-border);
+}
+
+.btn-secondary:active {
+  background-color: var(--color-bg-main);
+}
+
+/* Animations */
+@keyframes slideUpFade {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulseFade {
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 161, 241, 0.4); }
+  70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(0, 161, 241, 0); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 161, 241, 0); }
+}
+
+.animate-slide-up {
+  animation: slideUpFade 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-pulse-btn {
+  animation: pulseFade 2s infinite;
+}
+
+/* Overlays */
+.overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(2px);
+  z-index: 100;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}

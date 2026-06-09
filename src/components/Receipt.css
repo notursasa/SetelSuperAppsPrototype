@@ -1,0 +1,107 @@
+.receipt-screen {
+  padding: var(--spacing-xl) var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.success-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--color-success);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+.success-icon svg {
+  width: 40px;
+  height: 40px;
+}
+
+.receipt-screen h2 {
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+}
+
+.total-paid {
+  font-size: 2.5rem;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--color-text-main);
+  margin-bottom: var(--spacing-xl);
+}
+
+.receipt-card {
+  width: 100%;
+  padding: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+}
+
+.receipt-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-sm);
+  font-size: 0.95rem;
+}
+
+.receipt-row.total {
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 0;
+  margin-top: var(--spacing-sm);
+}
+
+.divider {
+  border: 0;
+  height: 1px;
+  background: var(--color-text-muted);
+  opacity: 0.2;
+  margin: var(--spacing-md) 0;
+}
+
+.insights-panel {
+  width: 100%;
+  padding: var(--spacing-md);
+  background: rgba(0, 161, 156, 0.05);
+  border: 1px dashed var(--color-primary);
+  text-align: left;
+  margin-bottom: auto;
+}
+
+.insights-panel h4 {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: var(--spacing-sm);
+}
+
+.insight-row {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-bottom: 4px;
+}
+
+.insight-row .profit {
+  color: var(--color-success);
+}
+
+.insight-note {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  margin-top: var(--spacing-xs);
+  font-style: italic;
+}
+
+.back-btn {
+  margin-top: var(--spacing-xl);
+}

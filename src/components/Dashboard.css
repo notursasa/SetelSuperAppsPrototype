@@ -1,0 +1,230 @@
+.dashboard-scroll-area {
+  height: 100%;
+  overflow-y: auto;
+  background-color: var(--color-bg-main);
+  /* Hide scrollbar for cleaner look */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.dashboard-scroll-area::-webkit-scrollbar {
+  display: none;
+}
+
+.authentic-header {
+  background: white;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--color-border);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.scanner-icon {
+  padding: 8px;
+  color: var(--color-text-main);
+}
+.scanner-icon svg { width: 24px; height: 24px; }
+
+.header-divider {
+  width: 1px;
+  height: 24px;
+  background-color: var(--color-border);
+}
+
+.balance-info, .points-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.balance-value {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-text-main);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.balance-value span { font-size: 0.6rem; color: var(--color-text-light); }
+
+.points-value {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-text-main);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.mesra-logo {
+  background: #E81A24; /* Authentic Mesra red */
+  color: white;
+  font-size: 0.55rem;
+  padding: 1px 4px;
+  border-radius: 2px;
+  font-weight: bold;
+}
+
+.balance-action, .points-action {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-top: 2px;
+  letter-spacing: 0.5px;
+}
+
+/* Main Fuel Card */
+.fuel-station-card {
+  margin: 16px;
+  background: white;
+  border-radius: var(--radius-lg);
+  padding: 20px 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.station-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+
+.fuel-icon { width: 14px; height: 14px; }
+
+.station-name {
+  font-size: 1.1rem;
+  color: var(--color-text-main);
+  margin-bottom: 20px;
+}
+
+.authentic-btn {
+  background-color: var(--color-primary); /* bright blue */
+  border-radius: 6px;
+  padding: 14px;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  box-shadow: none;
+}
+
+/* Services Section */
+.services-section {
+  position: relative;
+  padding: 0 16px 24px 16px;
+}
+
+.authentic-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px 8px;
+  margin-bottom: 16px;
+}
+
+.service-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.auth-icon-wrapper {
+  width: 52px;
+  height: 52px;
+  background-color: var(--color-primary-light);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+  transition: transform 0.2s;
+}
+
+.service-item:active .auth-icon-wrapper {
+  transform: scale(0.95);
+}
+
+.service-label {
+  font-size: 0.65rem;
+  color: var(--color-text-muted);
+  line-height: 1.2;
+}
+
+
+
+/* View More Button */
+.view-more-container {
+  display: flex;
+  justify-content: center;
+  margin-top: -10px; /* Pull it up over the grid slightly */
+  position: relative;
+  z-index: 10;
+}
+
+.view-more-btn {
+  background: white;
+  border: 1px solid var(--color-border);
+  padding: 8px 16px;
+  border-radius: var(--radius-pill);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-text-main);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Get Started */
+.get-started-section {
+  padding: 16px;
+  margin-bottom: 30px;
+}
+
+.get-started-section h3 {
+  font-size: 1rem;
+  margin-bottom: 12px;
+}
+
+.promo-scroll {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.promo-scroll::-webkit-scrollbar { display: none; }
+
+.promo-card {
+  min-width: 140px;
+  height: 100px;
+  border-radius: var(--radius-md);
+  padding: 12px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.bg-pink { background: #FDE8E8; }
+.bg-blue { background: #E1EFFE; }
+
+.promo-text {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-text-main);
+}
