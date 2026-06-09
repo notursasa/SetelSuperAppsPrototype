@@ -12,7 +12,7 @@
 
 .authentic-header {
   background: white;
-  padding: 12px 16px;
+  padding: 44px 16px 12px 16px;
   border-bottom: 1px solid var(--color-border);
   position: sticky;
   top: 0;

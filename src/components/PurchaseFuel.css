@@ -1,0 +1,120 @@
+.fuel-screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--color-bg-main);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+}
+
+.fuel-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 44px 16px 20px 16px;
+  background-color: var(--color-bg-main);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.fuel-header h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-main);
+  padding: 4px;
+}
+
+.back-btn svg {
+  width: 24px;
+  height: 24px;
+}
+
+.station-info {
+  padding: 24px 20px;
+  text-align: center;
+  background: var(--color-primary);
+  color: white;
+}
+
+.station-info h3 {
+  font-size: 1.3rem;
+  margin-bottom: 8px;
+}
+
+.station-info p {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.pump-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  padding: 24px 20px;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.pump-card {
+  background: white;
+  border: 2px solid var(--color-border);
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.pump-card.selected {
+  border-color: var(--color-primary);
+  background: #f0f9ff;
+  box-shadow: 0 4px 12px rgba(0, 161, 241, 0.2);
+}
+
+.pump-icon {
+  font-size: 2rem;
+}
+
+.pump-number {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--color-text-main);
+}
+
+.payment-bottom-bar {
+  background: white;
+  padding: 20px;
+  border-top: 1px solid var(--color-border);
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.05);
+}
+
+.payment-details {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  font-size: 0.9rem;
+}
+
+.payment-label {
+  color: var(--color-text-muted);
+}
+
+.payment-method {
+  font-weight: 600;
+  color: var(--color-text-main);
+}

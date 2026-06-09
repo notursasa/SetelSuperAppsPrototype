@@ -1,0 +1,378 @@
+.parking-screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #f8fafc;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+}
+
+.parking-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 44px 16px 20px 16px;
+  background-color: white;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.parking-header h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-text-main);
+}
+
+.parking-tabs {
+  display: flex;
+  background: white;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 16px 0;
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.tab-btn.active {
+  color: var(--color-primary);
+  border-bottom-color: var(--color-primary);
+}
+
+.parking-scroll-area {
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: 100px; /* space for bottom bar */
+}
+
+.tab-content {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+/* Banners */
+.lpr-banner, .street-banner {
+  background: linear-gradient(135deg, #0ea5e9, #0284c7);
+  border-radius: 16px;
+  padding: 24px 20px;
+  color: white;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.2);
+}
+
+.lpr-banner h3, .street-banner h3 {
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+}
+
+.lpr-banner p, .street-banner p {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+/* Vehicle Card */
+.vehicle-card {
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  border: 1px solid var(--color-border);
+  margin-bottom: 24px;
+}
+
+.vehicle-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.vehicle-icon {
+  font-size: 2rem;
+  margin-right: 16px;
+  background: #f1f5f9;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.vehicle-info h4 {
+  font-size: 1rem;
+  margin-bottom: 4px;
+}
+
+.license-plate {
+  display: inline-block;
+  background: black;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 6px;
+  font-weight: 700;
+  font-family: monospace;
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+  border: 2px solid #ddd;
+}
+
+.toggle-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 16px;
+  border-top: 1px solid var(--color-border);
+  font-weight: 500;
+}
+
+.toggle-hint {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  margin-top: 12px;
+}
+
+/* Toggle Switch */
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 28px;
+}
+
+.toggle-switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #10b981;
+}
+
+input:checked + .slider:before {
+  transform: translateX(22px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/* Locations List */
+.locations-list h4 {
+  font-size: 1rem;
+  margin-bottom: 16px;
+  color: var(--color-text-main);
+}
+
+.locations-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.locations-list li {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  background: white;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  border: 1px solid var(--color-border);
+}
+
+.location-icon {
+  font-size: 1.5rem;
+  margin-right: 16px;
+  width: 40px;
+  height: 40px;
+  background: #f1f5f9;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.location-details h5 {
+  font-size: 0.95rem;
+  margin-bottom: 2px;
+}
+
+.location-details span {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+/* Street Form */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: var(--color-text-main);
+}
+
+.parking-select {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid var(--color-border);
+  font-size: 1rem;
+  background: white;
+  outline: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23666%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px top 50%;
+  background-size: 12px auto;
+}
+
+.vehicle-selector {
+  margin-bottom: 20px;
+}
+
+.vehicle-selector label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.selected-vehicle {
+  padding: 16px;
+  background: white;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+}
+
+.duration-selector {
+  margin-bottom: 32px;
+}
+
+.duration-selector label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.duration-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  background: white;
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid var(--color-border);
+}
+
+.duration-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--color-primary);
+  background: white;
+  color: var(--color-primary);
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.duration-btn:hover:not(:disabled) {
+  background: #f0f9ff;
+}
+
+.duration-btn:disabled {
+  border-color: var(--color-border);
+  color: var(--color-text-muted);
+  cursor: not-allowed;
+}
+
+.duration-display {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  min-width: 60px;
+  justify-content: center;
+}
+
+.duration-val {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.duration-unit {
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+
+.payment-summary {
+  background: white;
+  border-radius: 12px;
+  padding: 16px;
+  border: 1px solid var(--color-border);
+  margin-bottom: 24px;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.wallet-balance-row {
+  border-top: 1px dashed var(--color-border);
+  margin-top: 8px;
+  padding-top: 16px;
+  color: var(--color-text-muted);
+}
+
+.parking-submit-btn.processing {
+  opacity: 0.7;
+  cursor: not-allowed;
+}

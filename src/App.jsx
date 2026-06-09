@@ -7,25 +7,41 @@ import CrossSell from './components/CrossSell';
 import Receipt from './components/Receipt';
 import MapSimulation from './components/MapSimulation';
 import ControlPanel from './components/ControlPanel';
+import PurchaseFuel from './components/PurchaseFuel';
+import FeatureSimulation from './components/FeatureSimulation';
+import SetelWallet from './components/SetelWallet';
+import Parking from './components/Parking';
+import FuelPrice from './components/FuelPrice';
+import CafeMesra from './components/CafeMesra';
+import BudiMadani from './components/BudiMadani';
+import CarService from './components/CarService';
 
 function App() {
-  const [appState, setAppState] = useState('IDLE'); // IDLE, PUSH_RECEIVED, TRIGGERED, CROSS_SELL, RECEIPT
+  const [appState, setAppState] = useState('IDLE'); // IDLE, PUSH_RECEIVED, TRIGGERED, CROSS_SELL, RECEIPT, PURCHASE_FUEL, GENERIC_FEATURE, SETEL_WALLET, PARKING, FUEL_PRICE, CAFE_MESRA, BUDI_MADANI, CAR_SERVICE
   const [crossSellTotal, setCrossSellTotal] = useState(0);
   const [toastMessage, setToastMessage] = useState('');
   const [showMap, setShowMap] = useState(true);
+  const [activeFeature, setActiveFeature] = useState(null); // stores { name, icon }
+  const [walletBalance, setWalletBalance] = useState(74.00);
 
   const showToast = (message) => {
     setToastMessage(message);
     setTimeout(() => setToastMessage(''), 3000);
   };
 
+  const handlePayParking = (amount) => {
+    setWalletBalance(prev => prev - amount);
+  };
+
+  const handlePayCafe = (amount) => {
+    setWalletBalance(prev => prev - amount);
+  };
+
   const handleSimulateArrival = () => {
-    // Show the push notification banner when the car arrives
     setAppState('PUSH_RECEIVED');
   };
 
   const handleOpenNotification = () => {
-    // When user taps the top banner, open the full modal
     setAppState('TRIGGERED');
   };
 
@@ -45,10 +61,48 @@ function App() {
   const handleReset = () => {
     setAppState('IDLE');
     setCrossSellTotal(0);
+    setActiveFeature(null);
   };
 
   const handleFeatureNotImplemented = () => {
     showToast("This feature is outside the scope of the SuperApp demo.");
+  };
+
+  const handleOpenPurchaseFuel = () => {
+    setAppState('PURCHASE_FUEL');
+  };
+
+  const handleOpenFeature = (name, icon) => {
+    setActiveFeature({ name, icon });
+    setAppState('GENERIC_FEATURE');
+  };
+
+  const handleOpenWallet = () => {
+    setAppState('SETEL_WALLET');
+  };
+
+  const handleTopUpWallet = (amount) => {
+    setWalletBalance(prev => prev + amount);
+  };
+
+  const handleOpenParking = () => {
+    setAppState('PARKING');
+  };
+
+  const handleOpenFuelPrice = () => {
+    setAppState('FUEL_PRICE');
+  };
+
+  const handleOpenCafe = () => {
+    setAppState('CAFE_MESRA');
+  };
+
+  const handleOpenBudiMadani = () => {
+    setAppState('BUDI_MADANI');
+  };
+
+  const handleOpenCarService = () => {
+    setAppState('CAR_SERVICE');
   };
 
   return (
@@ -69,7 +123,19 @@ function App() {
         <div className="app-container">
           
           {(appState === 'IDLE' || appState === 'PUSH_RECEIVED') && (
-            <Dashboard onTriggerGeolocation={() => {}} onFeatureNotImplemented={handleFeatureNotImplemented} />
+            <Dashboard 
+              walletBalance={walletBalance}
+              onTriggerGeolocation={() => {}} 
+              onFeatureNotImplemented={handleFeatureNotImplemented}
+              onOpenPurchaseFuel={handleOpenPurchaseFuel}
+              onOpenFeature={handleOpenFeature}
+              onOpenWallet={handleOpenWallet}
+              onOpenParking={handleOpenParking}
+              onOpenFuelPrice={handleOpenFuelPrice}
+              onOpenCafe={handleOpenCafe}
+              onOpenBudiMadani={handleOpenBudiMadani}
+              onOpenCarService={handleOpenCarService}
+            />
           )}
 
           {appState === 'PUSH_RECEIVED' && (
@@ -78,10 +144,73 @@ function App() {
 
           {appState === 'TRIGGERED' && (
             <>
-              <Dashboard onTriggerGeolocation={() => {}} onFeatureNotImplemented={handleFeatureNotImplemented} />
+              <Dashboard 
+                walletBalance={walletBalance}
+                onTriggerGeolocation={() => {}} 
+                onFeatureNotImplemented={handleFeatureNotImplemented}
+                onOpenPurchaseFuel={handleOpenPurchaseFuel}
+                onOpenFeature={handleOpenFeature}
+                onOpenWallet={handleOpenWallet}
+                onOpenParking={handleOpenParking}
+                onOpenFuelPrice={handleOpenFuelPrice}
+                onOpenCafe={handleOpenCafe}
+                onOpenBudiMadani={handleOpenBudiMadani}
+                onOpenCarService={handleOpenCarService}
+              />
               <div className="overlay active" onClick={handleDeclineWash}></div>
               <NotificationModal onAccept={handleAcceptWash} onDecline={handleDeclineWash} />
             </>
+          )}
+
+          {appState === 'PURCHASE_FUEL' && (
+            <PurchaseFuel walletBalance={walletBalance} onBack={() => setAppState('IDLE')} />
+          )}
+
+          {appState === 'SETEL_WALLET' && (
+            <SetelWallet 
+              balance={walletBalance} 
+              onTopUp={handleTopUpWallet} 
+              onBack={() => setAppState('IDLE')} 
+              onShowToast={showToast}
+            />
+          )}
+
+          {appState === 'PARKING' && (
+            <Parking 
+              walletBalance={walletBalance} 
+              onPayParking={handlePayParking} 
+              onBack={() => setAppState('IDLE')} 
+              onShowToast={showToast}
+            />
+          )}
+
+          {appState === 'FUEL_PRICE' && (
+            <FuelPrice onBack={() => setAppState('IDLE')} />
+          )}
+
+          {appState === 'CAFE_MESRA' && (
+            <CafeMesra 
+              walletBalance={walletBalance} 
+              onPayCafe={handlePayCafe} 
+              onBack={() => setAppState('IDLE')} 
+              onShowToast={showToast}
+            />
+          )}
+
+          {appState === 'BUDI_MADANI' && (
+            <BudiMadani onBack={() => setAppState('IDLE')} />
+          )}
+
+          {appState === 'CAR_SERVICE' && (
+            <CarService onBack={() => setAppState('IDLE')} />
+          )}
+
+          {appState === 'GENERIC_FEATURE' && activeFeature && (
+            <FeatureSimulation 
+              featureName={activeFeature.name} 
+              icon={activeFeature.icon} 
+              onBack={() => setAppState('IDLE')} 
+            />
           )}
 
           {appState === 'CROSS_SELL' && (
