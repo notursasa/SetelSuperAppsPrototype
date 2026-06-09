@@ -82,7 +82,7 @@ body {
 }
 
 .phone-mockup-wrapper.centered-phone {
-  flex: 0 0 auto;
+  flex: 0 0 400px; /* Maintain fixed width to prevent collapse */
   border-left: none;
   background-color: transparent;
   transform: scale(1.05); /* slightly enlarge when standalone */

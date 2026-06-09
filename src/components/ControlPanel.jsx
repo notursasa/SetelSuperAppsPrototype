@@ -10,10 +10,10 @@ const ControlPanel = ({ showMap, onToggleMap, onTriggerNotification, onReset }) 
       </div>
       
       <div className="control-actions">
-        <label className="toggle-switch">
+        <label className="cp-toggle-switch">
           <input type="checkbox" checked={showMap} onChange={onToggleMap} />
-          <span className="slider round"></span>
-          <span className="toggle-label">Show Map View</span>
+          <span className="cp-slider round"></span>
+          <span className="cp-toggle-label">Map View</span>
         </label>
 
         <button className="control-btn primary" onClick={onTriggerNotification}>

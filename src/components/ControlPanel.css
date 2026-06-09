@@ -39,19 +39,19 @@
 }
 
 /* Toggle Switch */
-.toggle-switch {
+.cp-toggle-switch {
   display: flex;
   align-items: center;
   gap: 12px;
   cursor: pointer;
-  margin-bottom: 4px;
+  margin-bottom: 12px;
 }
 
-.toggle-switch input {
+.cp-toggle-switch input {
   display: none;
 }
 
-.slider {
+.cp-slider {
   position: relative;
   width: 40px;
   height: 22px;
@@ -60,7 +60,7 @@
   transition: .4s;
 }
 
-.slider:before {
+.cp-slider:before {
   position: absolute;
   content: "";
   height: 16px;
@@ -72,17 +72,18 @@
   transition: .4s;
 }
 
-input:checked + .slider {
+input:checked + .cp-slider {
   background-color: #0ea5e9;
 }
 
-input:checked + .slider:before {
+input:checked + .cp-slider:before {
   transform: translateX(18px);
 }
 
-.toggle-label {
+.cp-toggle-label {
   font-size: 0.9rem;
   font-weight: 500;
+  white-space: nowrap;
 }
 
 /* Buttons */
